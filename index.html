@@ -2,21 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My Rose for You 🌹</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine? 💖</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+  <div class="container" id="main">
+    <h1>Will you be my Valentine? 💕</h1>
 
-  <h1 class="title">A Garden Made Just for You 🌹</h1>
-  <p class="subtitle">Click the roses…</p>
+    <div class="buttons">
+      <button id="yes">YES 💖</button>
+      <button id="no">NO 🙄</button>
+    </div>
 
-  <div id="garden"></div>
-
-  <div id="messageBox" class="hidden"></div>
+    <div class="message" id="message"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
