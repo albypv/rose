@@ -1,37 +1,48 @@
-const garden = document.getElementById("garden");
-const messageBox = document.getElementById("messageBox");
+const noBtn = document.getElementById("no");
+const msg = document.getElementById("message");
+const yesBtn = document.getElementById("yes");
 
-const messages = [
-  "You make my world bloom 🌹",
-  "Every rose here is for you ❤️",
-  "I fall for you more every day 💕",
-  "You’re my forever favorite 🌸",
-  "This garden exists because of you 💖"
+const funnyTexts = [
+  "Haha 😜 try again!",
+  "Oops… wrong choice 💕",
+  "Nice try 😏",
+  "The universe says NO to NO",
+  "You know the right answer 😌"
 ];
 
-const ROSE_COUNT = 35; // more roses = fuller screen
+// NO button moves
+noBtn.addEventListener("click", () => {
+  const x = Math.random() * 60;
+  const y = Math.random() * 60;
 
-for (let i = 0; i < ROSE_COUNT; i++) {
-  const rose = document.createElement("div");
-  rose.className = "rose";
-  rose.textContent = "🌹";
+  noBtn.style.left = x + "%";
+  noBtn.style.top = y + "%";
 
-  rose.style.left = Math.random() * 90 + "vw";
-  rose.style.top = Math.random() * 85 + "vh";
-  rose.style.animationDuration = 3 + Math.random() * 4 + "s";
-
-  rose.addEventListener("click", () => {
-    messageBox.textContent =
-      messages[Math.floor(Math.random() * messages.length)];
-    messageBox.classList.remove("hidden");
-  });
-
-  garden.appendChild(rose);
-}
-
-/* Close message when clicking outside */
-document.body.addEventListener("click", (e) => {
-  if (!e.target.classList.contains("rose")) {
-    messageBox.classList.add("hidden");
-  }
+  msg.innerText = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
 });
+
+// YES button action
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div class="yes-screen">
+      <div>
+        <h2>YAYYY 💖💖💖</h2>
+        <p>You make me the happiest person ever 🥰</p>
+        <p>Happy Propose Day, my Valentine 🌹</p>
+      </div>
+    </div>
+  `;
+});
+
+// Floating hearts generator
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 4000);
+}, 300);
